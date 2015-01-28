@@ -5,15 +5,17 @@ advocate django database. This is only guaranteed to work if content app is on m
 ```
 git clone https://github.com/harvardadvocate/advo_migration
 ```
-Once you've cloned the repo, go to the bottom of the file ```migration.py``` to line 228 and edit the settings to match your local settings.
+Once you've cloned the repo, go to the bottom of the file ```migration.py``` to line 228 and edit the settings to match your local settings. 
 ```
 con = MySQLdb.connect('localhost', 'root', '', 'advocate_old')
 ```
-Create a new database for your drupal import called advocate_old. 
+Create a new database for your drupal import called advocate_old and a database for your new django database
 ```
 mysql -u root -p
 CREATE DATABASE advocate_old
+CREATE DATABASE advocate
 quit
+```
 ```
 # Import the drupal advocate database
 
@@ -24,21 +26,23 @@ mysql -u root -p advocate_old < advocate_drupal_old.sql
 ```
 This will take a while because it's a large file. 
 
-# Run the migration script
-Make sure you have a backup of your old database and that magazine app is on migration 0004. You can run ```./manage.py migrate magazine 0004``` just to be sure. Also make sure you're in your virtual env before running the migration script ```workon advocateonline```. 
+# Make sure the magazine app is on migration 0004. 
 ```
-python migration.py
-```
-# Errors
-If you get the following error:
-```
-_mysql_exceptions.OperationalError: (1054, "Unknown column 'photo' in 'field list'")
-```
-Then you should do the following:
-```
+./manage.py syncdb
+./manage.py migrate magazine 0001
 ./manage.py migrate magazine 0003 --fake
 ./manage.py migrate magazine 0004
 ```
-You will need to update the magazine_issues table because all the years and seasons are incorrect. 
+
+# Run the migration script
+Make sure you're in your virtual env before running the migration script ```workon advocateonline```. 
+```
+python migration.py
+```
+Be sure to delete your database password after you run the migration script. 
+
+# Errors
+
+You will need to update the magazine_issues table because all the years and seasons are incorrect. The updated magazine_issues table is also in Google Drive, in the same database advocate_old is uploaded to.
 
  
