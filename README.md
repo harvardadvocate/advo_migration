@@ -22,9 +22,10 @@ Download a copy of the drupal database from the Google Drive folder ```/Advocate
 ```
 mysql -u root -p advocate_old < advocate_drupal_old.sql
 ```
-This will take a while because it's a large file. Make sure you have a backup of your old database and that magazine app is on migration 0004. You can run ```./manage.py migrate magazine 0004``` just to be sure. Also make sure you're in your virtual env before running the migration script ```workon advocateonline```. 
+This will take a while because it's a large file. 
 
 # Run the migration script
+Make sure you have a backup of your old database and that magazine app is on migration 0004. You can run ```./manage.py migrate magazine 0004``` just to be sure. Also make sure you're in your virtual env before running the migration script ```workon advocateonline```. 
 ```
 python migration.py
 ```
