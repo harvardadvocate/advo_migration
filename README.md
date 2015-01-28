@@ -41,3 +41,4 @@ Then you should do the following:
 ```
 You will need to update the magazine_issues table because all the years and seasons are incorrect. 
 
+ 
