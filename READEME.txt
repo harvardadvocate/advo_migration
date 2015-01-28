@@ -1,3 +1,0 @@
-this script migrates from the advocate drupal database (advocate_old) to the
-advocate django database. Only guaranteed to work if content app is on
-migration 0004
