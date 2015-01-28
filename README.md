@@ -16,7 +16,6 @@ CREATE DATABASE advocate_old
 CREATE DATABASE advocate
 quit
 ```
-```
 # Import the drupal advocate database
 
 Download a copy of the drupal database from the Google Drive folder ```/Advocate Website/Database/advocate_drupal_old.sql```. To import it, navigate to the directory containing the file, and then run:
